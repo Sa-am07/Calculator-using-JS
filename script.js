@@ -6,7 +6,9 @@ let arr = Array.from(buttons);
 arr.forEach(button => {
 	button.addEventListener ('click', (e) =>{
 		if (e.target.innerHTML == '='){
-			string= eval(string);
+			// Process percentage before evaluation
+			let processedString = string.replace(/(\d+(?:\.\d+)?)%/g, '($1/100)');
+			string = eval(processedString);
 			input.value = string;
 		}
 
